@@ -1,0 +1,8 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+
+<https://semanticweblondon.com/events/>
+   a ldp:BasicContainer ;
+   dc:title "All Semantic Web London events" ;
+   dc:comment "A group of professionals in London applying Semantic Web technologies to solve business problems." ;
+   ldp:contains <232354771>, <233037799>, <234237999> .

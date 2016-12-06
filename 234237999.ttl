@@ -1,0 +1,5 @@
+@prefix schema: <http://schema.org> .
+@prefix dc: <http://purl.org/dc/terms/> .
+
+<https://semanticweblondon.com/events/234237999> a schema:Event 
+    dc:title "Building Linked Data Platform with AWS (without actually building one)." .

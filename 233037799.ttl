@@ -1,0 +1,5 @@
+@prefix schema: <http://schema.org> .
+@prefix dc: <http://purl.org/dc/terms/> .
+
+<https://semanticweblondon.com/events/233037799> a schema:Event 
+    dc:title "Streaming Linked Data to the UI." .

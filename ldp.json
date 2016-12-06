@@ -1,0 +1,175 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "semantic-web-london",
+    "description": "Semantic Web London Demo - AWS as LDP"
+  },
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/{container}": {
+      "get": {
+        "produces": [
+          "text/turtle"
+        ],
+        "parameters": [
+          {
+            "name": "container",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Content-Type": {
+                "type": "string"
+              },
+              "Link": {
+                "type": "string"
+              },
+              "Allow": {
+                  "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "500": {
+            "description": "500 response"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "credentials": "arn:aws:iam::XXX:role/api-service-role",
+          "responses": {
+            "4\\d{2}": {
+              "statusCode": "400"
+            },
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Allow": "'GET'",  
+                "method.response.header.Content-Type": "integration.response.header.Content-Type",
+                "method.response.header.Date": "integration.response.header.Date",
+                "method.response.header.Content-Length": "integration.response.header.content-length",
+                "method.response.header.Link": "integration.response.header.x-amz-meta-link"
+              }
+            },
+            "5\\d{2}": {
+              "statusCode": "500"
+            }
+          },
+          "requestParameters": {
+            "integration.request.path.container": "method.request.path.container"
+          },
+          "uri": "arn:aws:apigateway:eu-west-1:s3:path/XXX/{container}/",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "aws"
+        }
+      }
+    },
+    "/{container}/{resource}": {
+      "get": {
+        "produces": [
+          "text/turtle"
+        ],
+        "parameters": [
+          {
+            "name": "container",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }          
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Content-Type": {
+                "type": "string"
+              },
+              "Link": {
+                "type": "string"
+              },
+              "Allow": {
+                  "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "500": {
+            "description": "500 response"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "credentials": "arn:aws:iam::XXX:role/api-service-role",
+          "responses": {
+            "4\\d{2}": {
+              "statusCode": "400"
+            },
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Allow": "'GET'",  
+                "method.response.header.Content-Type": "integration.response.header.Content-Type",
+                "method.response.header.Date": "integration.response.header.Date",
+                "method.response.header.Content-Length": "integration.response.header.content-length",
+                "method.response.header.Link": "integration.response.header.x-amz-meta-link"
+              }
+            },
+            "5\\d{2}": {
+              "statusCode": "500"
+            }
+          },
+          "requestParameters": {
+            "integration.request.path.container": "method.request.path.container",
+            "integration.request.path.resource": "method.request.path.resource"
+          },
+          "uri": "arn:aws:apigateway:eu-west-1:s3:path/XXX/{container}/{resource}",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "aws"
+        }
+      }
+    }   
+  },
+  "definitions": {
+    "Empty": {
+      "type": "object",
+      "title": "Empty Schema"
+    }
+  }
+}

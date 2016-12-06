@@ -1,0 +1,5 @@
+@prefix schema: <http://schema.org> .
+@prefix dc: <http://purl.org/dc/terms/> .
+
+<https://semanticweblondon.com/events/232354771> a schema:Event 
+    dc:title "Patterns in Building Ontologies from Concept Maps and other Artefacts." .
